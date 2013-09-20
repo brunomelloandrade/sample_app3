@@ -30,3 +30,4 @@ describe "Static Pages" do
   end 
    	 
 end
+
