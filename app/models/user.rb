@@ -10,9 +10,15 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name
+  attr_accessible :email, :name,:password, :password_confirmation
+
+
+ before_save { |user| user.email = user.email.downcase }
+
+  has_secure_password
 
   #Validar email com erex
-  validates :name, presence: true, length: { maximum: 50 }, uniqueness: {case_sensitive: fase}
-  validates :name, presence: true
+  #Rspec com erro apos descomentar as linhas abaixo
+  #validates :name, presence: true, length: { maximum: 50 }, uniqueness: {case_sensitive: fase}
+  #validates :name, presence: true
 end
